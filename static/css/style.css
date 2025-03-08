@@ -1,0 +1,107 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #F5F5F5; /* Light gray background, not black */
+}
+
+.form {
+  max-width: 400px;
+  padding: 30px 20px; /* Increased top/bottom padding to expand height */
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.form h3 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Name label and input side by side */
+.name-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.name-group label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.name-group input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Join section styles */
+.join {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.join input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Button styles with new color */
+.form button {
+  padding: 10px 20px;
+  background-color: #007BFF; /* Changed to blue, a fresh and tech-friendly color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.form button[name="create"] {
+  width: 100%; /* Full-width for Create button */
+}
+
+/* Input focus style */
+.form input[type="text"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .name-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .name-group label {
+    margin-bottom: 5px;
+    margin-right: 0;
+  }
+  .join {
+    flex-direction: column;
+  }
+  .join input[type="text"] {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .join button {
+    width: 100%;
+  }
+}
