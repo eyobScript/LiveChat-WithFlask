@@ -16,7 +16,6 @@ const messages = document.getElementById('messages');
 const messageInput = document.getElementById('message');
 
 const createMessages = (name, msg) => {
-
     const content = `
         <span>
             <strong>${name}</strong>: ${msg}
@@ -24,8 +23,15 @@ const createMessages = (name, msg) => {
         <span style="font-size: 12px; color: gray; margin-left: 10px;">${new Date().toLocaleString()}</span>
     `;
 
-    messages.innerText +=content
-    messages.scrollTop = messages.scrollHeight; // Auto-scroll to latest message
+    // Create a new div for the message
+    const messageElement = document.createElement('div');
+    messageElement.innerHTML = content;
+
+    // Append the new message to the messages container
+    messages.appendChild(messageElement);
+
+    // Auto-scroll to the latest message
+    messages.scrollTop = messages.scrollHeight;
 };
 
 const sendMessage = () => {
@@ -48,7 +54,11 @@ messageInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") sendMessage();
 });
 
-
-
 </script>
+{% for msg in messages %}
+<script type="text/javascript">
+    createMessages("{{ msg.name }}", "{{ msg.massage }}")
+</script>
+{% endfor %}
+
 {% endblock %}
