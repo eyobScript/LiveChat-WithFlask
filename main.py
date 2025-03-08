@@ -9,7 +9,9 @@ app.config['SECRET_KEY'] = 'gdfvbnsoehkcxdtfcygvuhijofebcw'
 socketio = SocketIO(app=app)
 
 
-
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
 
 
 
