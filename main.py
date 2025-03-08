@@ -15,7 +15,7 @@ def generate_room_code(length):
     while True:
         code = ''
         for _ in range(length):
-            code=+ random.choice(ascii_uppercase)
+            code +=random.choice(ascii_uppercase)
         if code not in rooms:
             break
     return code
@@ -36,7 +36,7 @@ def home():
             return render_template('home.html', error='Please enter room code.', code=code, name=name)
 
         room = code
-        if create != False == True:
+        if create != False:
             room = generate_room_code(5)
             rooms[room] = {"messages": [], "members": 0}
         elif code not in rooms:
@@ -50,6 +50,17 @@ def home():
         return redirect(url_for('room'))
 
     return render_template('home.html')
+
+
+@app.route('/room')
+def room():
+    return render_template('room.html')
+
+
+
+
+
+
 
 
 
