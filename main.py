@@ -98,6 +98,7 @@ def connect(auth):
 
 @socketio.on("disconnect")
 def disconnect():
+
     name = session.get('name')
     room = session.get('room')
     leave_room(room)
