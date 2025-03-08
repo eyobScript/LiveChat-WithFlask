@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect, flash
+from flask import Flask, render_template, session, request, redirect, flash, url_for
 from flask_socketio import join_room, leave_room, SocketIO, send
 import random
 from string import ascii_uppercase
@@ -47,6 +47,7 @@ def home():
         session["room"] = room
         session["name"] = name
 
+        return redirect(url_for('room'))
 
     return render_template('home.html')
 
