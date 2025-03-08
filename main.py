@@ -22,7 +22,7 @@ def generate_room_code(length):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-
+    session.clear()
     if request.method == 'POST':
         name = request.form.get('name')
         code = request.form.get('code')
@@ -43,6 +43,9 @@ def home():
             return render_template('home.html', error="Room doesn't exist!", code=code, name=name)
 
 
+
+        session["room"] = room
+        session["name"] = name
 
 
     return render_template('home.html')
