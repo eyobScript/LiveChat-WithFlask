@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, render_template, session, request, redirect, flash, url_for
 from flask_socketio import join_room, leave_room, SocketIO, send
 import random
@@ -58,6 +60,25 @@ def room():
     if room is None or session.get('name') is None or room not in rooms:
         return redirect(url_for('home'))
     return render_template('room.html')
+
+@socketio.on("connect")
+def connect(auth):
+    name = session.get('name')
+    room = session.get('room')
+
+    # if name and room doesnt exist in session
+    if not name or not room:
+        return
+    # if room doesnt exist in rooms
+    if room not in rooms:
+        leave_room(room=room)
+        return
+
+    #  allows the user to join the room
+    join_room(room=room)
+    send(message={"name": name, "message":"hase enterd the room"}, to=room)
+    rooms[room]['members'] += 1
+    print(f'{name} joined in room {room}')
 
 
 
