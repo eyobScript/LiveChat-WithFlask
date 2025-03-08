@@ -11,6 +11,19 @@ socketio = SocketIO(app=app)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        code = request.form.get('code')
+        create = request.form.get('create', False)
+        join = request.form.get('join', False)
+
+        if not name:
+            return render_template('home.html', error='Please enter your name.')
+
+        if code != False and join:
+            return render_template('home.html', error='Please enter room code.')
+
     return render_template('home.html')
 
 
