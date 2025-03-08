@@ -24,6 +24,7 @@ def generate_room_code(length):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+
     session.clear()
     if request.method == 'POST':
         name = request.form.get('name')
