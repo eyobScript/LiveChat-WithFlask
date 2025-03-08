@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect
+from flask import Flask, render_template, session, request, redirect, flash
 from flask_socketio import join_room, leave_room, SocketIO, send
 import random
 from string import ascii_uppercase
@@ -21,7 +21,7 @@ def home():
         if not name:
             return render_template('home.html', error='Please enter your name.')
 
-        if code != False and join:
+        if join != False and not code:
             return render_template('home.html', error='Please enter room code.')
 
     return render_template('home.html')
