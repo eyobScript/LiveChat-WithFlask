@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, render_template, session, request, redirect, flash, url_for
 from flask_socketio import join_room, leave_room, SocketIO, send
 import random
